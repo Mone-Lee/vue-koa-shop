@@ -1,0 +1,26 @@
+{
+  "name": "vue-koa-shop",
+  "version": "1.0.0",
+  "description": "在已有vue开发的商城项目的基础上，引入koa，实现服务端渲染",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node entry.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mone-Lee/vue-koa-shop.git"
+  },
+  "author": "limengyi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mone-Lee/vue-koa-shop/issues"
+  },
+  "homepage": "https://github.com/Mone-Lee/vue-koa-shop#readme",
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-router": "^9.4.0",
+    "vue": "^2.6.12",
+    "vue-server-renderer": "^2.6.12"
+  }
+}
