@@ -13,5 +13,3 @@
     输出项目构建信息到stats.json文件
 5. npm run dll  
     把vue, vuex, element-ui等包打包到一个公共包（build/library/library_[hash].dll.js）中，并在html文件中引用，预编译资源模块， 加快构建速度
-6. node server/index.js  
-    开启服务器端，默认使用3000端口，查看ssr渲染效果
