@@ -155,5 +155,11 @@ module.exports = {
                 }
             }
         }
+    },
+    resolve: {
+        alias: {
+            'vue': path.resolve(__dirname, './node_modules/vue/dist/vue.min.js'),
+            '@': path.join(__dirname, './src')
+        }
     }
 }

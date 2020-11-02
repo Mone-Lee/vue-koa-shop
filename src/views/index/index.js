@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import App from './home.vue';
-// import ElementUI from 'element-ui';
-
-// Vue.use(ElementUI);
+import '../../assets/styles/variables.less'
 
 const root = document.getElementById('root');
 
