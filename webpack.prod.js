@@ -161,11 +161,11 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackExternalsPlugin({
             externals: [
-              {
-                module: 'vue',
-                entry: 'https://lib.baomitu.com/vue/2.6.12/vue.js',
-                global: 'Vue',
-              },
+                {
+                    module: 'vue',
+                    entry: 'https://lib.baomitu.com/vue/2.6.12/vue.js',
+                    global: 'Vue',
+                }
             ],
         }),
         // new FriendlyErrorsWebpackPlugin(),
@@ -184,7 +184,7 @@ module.exports = {
         // }),
         // new AddAssetHtmlPlugin({
         //     filepath: path.join(__dirname, 'build/library/*.dll.js')
-        // })
+        // }),
         new HardSourceWebpackPlugin()
     ].concat(htmlWebpackPlugins),
     optimization: {

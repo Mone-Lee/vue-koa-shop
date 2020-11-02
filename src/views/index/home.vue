@@ -1,7 +1,14 @@
 <template>
     <div class="home-container">
         <div class="home-content">
-            <img src="@/assets/img/top_bar.png">
+            <div class="home-head">
+                <div class="home-search-bar">
+                    <i class="iconfont iconfangdajing icon-search"></i>
+                    <p>{{ keyword }}</p>
+                </div>
+                <img src="@/assets/img/top_bar.png" class="top-bar">
+            </div>
+            
             <p class="txt-line">字体测试</p>
             <p class="txt-line">watch 测试</p>
             <p class="txt-line">热更新 测试</p>
@@ -19,12 +26,12 @@
 </template>
 
 <script>
-import '../../../common'
 import starIcon from '../../assets/img/icon_star.png'
 import bg from '../../assets/img/bg.jpg'
 export default {
     data() {
         return {
+            keyword: '限量发售|数字魔法师礼盒',
             starIcon: starIcon,
             bg: bg,
             showTest: false,
@@ -44,17 +51,29 @@ export default {
 </script>
 
 <style scoped lang="less">
-// @font-face {
-//     font-family: 'SourceHanSerifSC-Heavy';
-//     src: url('../assets/font/SourceHanSerifSC-Heavy.otf') format('truetype');
-// }
-.top-bar {
-    width: 750/@baserem;
-    height: 100/@baserem;
-    img {
-        width: 750/@baserem;
-        height: 100/@baserem;
+.home-search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5/@baserem 10/@baserem;
+    border-radius: 5/@baserem;
+    background-color: #f8f8f8;
+
+    .icon-search {
+        color: #ff6500;
+        margin-right: 20/@baserem;
     }
+
+    p {
+        color: #ff6500;
+        font-size: 12/@baserem;
+        letter-spacing: 1px;
+    }
+
+}
+.top-bar {
+    width: 100%;
+    height: 100/@baserem;
 }
 
 .txt-line {

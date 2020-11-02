@@ -77,7 +77,13 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    'less-loader'
+                    'less-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: path.resolve(__dirname, './src/assets/styles/variables.less'),
+                        }
+                    }
                 ]
             },
             {
