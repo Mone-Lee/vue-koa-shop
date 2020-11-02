@@ -19,9 +19,6 @@ import '../../../common'
 import starIcon from '../../assets/img/icon_star.png'
 import bg from '../../assets/img/bg.jpg'
 export default {
-    // components: {
-    //     'Test': () => import('./test.vue')
-    // },
     data() {
         return {
             starIcon: starIcon,
