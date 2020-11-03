@@ -17,8 +17,6 @@
             <p @click="dynamicImport">动态import (click)</p>
             <Test v-if='showTest'></Test>
             <p class="txt-line">log 格式 测试</p>
-            <el-radio v-model="radio" label="1">备选项</el-radio>
-            <el-radio v-model="radio" label="2">备选项</el-radio>
             <img :src="bg" class="big-img" />
         </div>
         <div class=""></div>

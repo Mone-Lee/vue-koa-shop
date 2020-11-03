@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>商城首页</title>
+    <title>{{title}}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,user-scalable=no">
     <meta name="format-detection" content="telephone=no">
@@ -15,9 +15,11 @@
     <meta name="baidu-site-verification" content="G4ovcyX25V">
     <meta name="apple-mobile-web-app-capable" content="no">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <%= require('raw-loader!./meta.html') %>
+
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <!--vue-ssr-outlet-->
+    </div>
 </body>
 </html>

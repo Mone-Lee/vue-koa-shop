@@ -7,6 +7,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
 const setMap = () => {
     const entry = {};
@@ -107,8 +108,9 @@ module.exports = {
     plugins: [
         new VueLoaderPlugins(),
         new webpack.HotModuleReplacementPlugin(),
-        new CleanWebpackPlugin(),
-        new FriendlyErrorsWebpackPlugin()
+        // new CleanWebpackPlugin(),
+        new FriendlyErrorsWebpackPlugin(),
+        new VueSSRClientPlugin()
     ].concat(htmlWebpackPlugins),
     resolve: {
         alias: {

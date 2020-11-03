@@ -14,6 +14,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
 const setMap = () => {
     const entry = {};
@@ -99,7 +100,13 @@ module.exports = {
                             },
                         }
                     },
-                    'less-loader'
+                    'less-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: path.resolve(__dirname, './src/assets/styles/variables.less'),
+                        }
+                    }
                 ]
             },
             {
@@ -185,7 +192,8 @@ module.exports = {
         // new AddAssetHtmlPlugin({
         //     filepath: path.join(__dirname, 'build/library/*.dll.js')
         // }),
-        new HardSourceWebpackPlugin()
+        new HardSourceWebpackPlugin(),
+        new VueSSRClientPlugin()
     ].concat(htmlWebpackPlugins),
     optimization: {
         splitChunks: {

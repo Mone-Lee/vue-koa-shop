@@ -2,14 +2,13 @@
 
 const glob = require('glob');
 const path = require('path');
-// const webpack = require('webpack');
 const VueLoaderPlugins = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const webpackDev = require('./webpack.dev');
+const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 
 const setMap = () => {
     const entry = {};
@@ -54,12 +53,13 @@ const setMap = () => {
 const { entry, htmlWebpackPlugins } = setMap();
 
 module.exports = {
+    target: 'node',
     mode: 'production',
     entry: entry,
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name]-server.js',
-        libraryTarget: 'umd'
+        libraryTarget: 'commonjs2'
     },
     module: {
         rules: [
@@ -97,7 +97,13 @@ module.exports = {
                             },
                         }
                     },
-                    'less-loader'
+                    'less-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: path.resolve(__dirname, './src/assets/styles/variables.less'),
+                        }
+                    }
                 ]
             },
             {
@@ -133,7 +139,6 @@ module.exports = {
             assetNameRegExp: /\.css$/g,
             cssProcessor: require('cssnano')
         }),
-        new CleanWebpackPlugin(),
         new HtmlWebpackExternalsPlugin({
             externals: [
               {
@@ -142,20 +147,9 @@ module.exports = {
                 global: 'Vue',
               },
             ],
-        })
+        }),
+        new VueSSRServerPlugin()
     ].concat(htmlWebpackPlugins),
-    optimization: {
-        splitChunks: {
-            minSize: 0,
-            cacheGroups: {
-                commons: {
-                    name: 'commons',
-                    chunks: 'all',
-                    minChunks: 2
-                }
-            }
-        }
-    },
     resolve: {
         alias: {
             'vue': path.resolve(__dirname, './node_modules/vue/dist/vue.min.js'),
