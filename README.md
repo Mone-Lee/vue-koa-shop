@@ -11,8 +11,8 @@
     等同于非ssr情况下的正常打包, 注意生成的 `dist/vue-ssr-client-manifest.json` 文件
 3. `npm run build:server`  
     打包ssr环境 (注意生成的 `dist/vue-ssr-server-hundle.json` 文件）
-4. `npm run build` 
-    按顺序执行npm run build:client 和 npm run build:server， 之后执行`node server/index.js`后可访问查看ssr后的页面效果
+4. `npm run build`   
+    按顺序执行npm run build:client 和 npm run build:server， 之后执行`node server/index.js`可访问查看ssr后的页面效果
 5. `npm run build:stats`    
     输出项目构建信息到stats.json文件
 6. `npm run dll`  
