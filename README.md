@@ -19,3 +19,9 @@
     把vue, vuex, element-ui等包打包到一个公共包（build/library/library_[hash].dll.js）中，并在html文件中引用，预编译资源模块， 加快构建速度
 6. `node server/index.js`  
     开启服务器端，默认使用3000端口，查看ssr渲染效果
+
+
+## 参考链接   
+1. 【Vue.js 服务器端渲染指南】https://ssr.vuejs.org/zh/  
+2. 【webpack中文文档】https://www.webpackjs.com/concepts/  
+3. 【Vue 2.x + Webpack 3.x + Nodejs 多页面项目框架】https://www.cnblogs.com/kenkofox/p/8018476.html   
