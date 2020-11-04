@@ -12,7 +12,6 @@ app.use(
     static(__dirname + '../dist/')
 )
 
-// const createApp = require('../app');
 const { createBundleRenderer } = require('vue-server-renderer');
 const createRenderer = (bundle, options) => createBundleRenderer(bundle, Object.assign(options, {
     // for component caching
@@ -20,41 +19,56 @@ const createRenderer = (bundle, options) => createBundleRenderer(bundle, Object.
         max: 1000,
         maxAge: 1000 * 60 * 15
     }),
-    // recommended for performance
     runInNewContext: false
 }));
-const template = fs.readFileSync(path.resolve(__dirname, '../src/views/index/index.html'), 'utf-8');
-const bundle = require('../dist/vue-ssr-server-bundle.json');
-const clientManifest = require('../dist/vue-ssr-client-manifest.json');
-let renderer = createRenderer(bundle, {
-    template,
-    clientManifest
-});
 
-let render = (ctx, next) => {
-    const context = { url: ctx.url, title: 'VueSSR 多页面' };
-    renderer.renderToString(context, (err, html) => {
+let rendererMap = {};
+const template = fs.readFileSync(path.resolve(__dirname, './index.template.html'), 'utf-8');
+const pageRoutes = require('./router.js');
+for(let pageName in pageRoutes) {
+    const bundle = require(`../dist/server/${pageName}/vue-ssr-server-bundle.json`);
+    const clientManifest = require(`../dist/server/${pageName}/vue-ssr-client-manifest.json`);
+    // 针对每个ssr入口，生成一个bundle render
+    rendererMap[pageName] = createRenderer(bundle, {
+        template,
+        clientManifest
+    });
+}
+
+const render = (pageName, ctx, next) => {
+    const context = {
+        url: ctx.url,
+        title: pageName
+    };
+    rendererMap[pageName].renderToString(context, (err, html) => {
         if (err) {
             if (err.code === 404) {
-                // res.status(404).end('Page not found')
                 ctx.status = 404;
                 ctx.body = 'Page not found';
             } else {
-                // res.status(500).end('Internal Server Error')
                 ctx.status = 500;
                 ctx.body = 'Internal Server Error';
             }
         } else {
-            // res.end(html)
             ctx.status = 200;
             ctx.body = html;
         }
     })
 }
 
-router.get('/', async (ctx, next) => {
-    render(ctx, next);
-})
+for(let pageName in pageRoutes) {
+    let pageConfig = pageRoutes[pageName];
+    router.get(pageConfig.url, (ctx, next) => {
+        console.log(ctx.url)
+        let name = '';
+        if(ctx.url === '/') {
+            name = 'index'
+        }else {
+            name = ctx.url.match(/\/(.*)(?=\.html)/)[1];
+        }
+        render(name, ctx, next)
+    })
+}
 
 app
     .use(router.routes())

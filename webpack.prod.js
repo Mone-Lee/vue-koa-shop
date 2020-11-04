@@ -19,6 +19,7 @@ const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 const setMap = () => {
     const entry = {};
     const htmlWebpackPlugins = [];
+    const vueSSRClientPlugins = [];
 
     const entryFiles = glob.sync(path.join(__dirname, 'src/views/*/index.js'));
     Object.keys(entryFiles)
@@ -46,15 +47,22 @@ const setMap = () => {
                     }
                 })
             )
+
+            vueSSRClientPlugins.push(
+                new VueSSRClientPlugin({
+                    filename: `server/${pageName}/vue-ssr-client-manifest.json`//dist目录
+                })
+            )
         })
 
     return {
         entry,
-        htmlWebpackPlugins
+        htmlWebpackPlugins,
+        vueSSRClientPlugins
     }
 }
 
-const { entry, htmlWebpackPlugins } = setMap();
+const { entry, htmlWebpackPlugins, vueSSRClientPlugins } = setMap();
 
 module.exports = {
     mode: 'production',
@@ -193,8 +201,10 @@ module.exports = {
         //     filepath: path.join(__dirname, 'build/library/*.dll.js')
         // }),
         new HardSourceWebpackPlugin(),
-        new VueSSRClientPlugin()
-    ].concat(htmlWebpackPlugins),
+        // new VueSSRClientPlugin({
+        //     filename: `server/${pageName}/vue-ssr-client-manifest.json`//dist目录
+        // })
+    ].concat(htmlWebpackPlugins).concat(vueSSRClientPlugins),
     optimization: {
         splitChunks: {
             minSize: 0,
