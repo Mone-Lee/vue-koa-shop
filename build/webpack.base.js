@@ -88,6 +88,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name]_[contenthash:8].css'
         }),
+        new FriendlyErrorsPlugin()
       ]
     : [
         new VueLoaderPlugin(),
