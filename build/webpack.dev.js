@@ -7,13 +7,12 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
 const setMap = () => {
     const entry = {};
     const htmlWebpackPlugins = [];
 
-    const entryFiles = glob.sync(path.join(__dirname, 'src/views/*/index.js'));
+    const entryFiles = glob.sync(path.join(__dirname, '../src/views/*/index.js'));
     Object.keys(entryFiles)
         .map(index => {
             const entryFile = entryFiles[index];
@@ -25,7 +24,7 @@ const setMap = () => {
             // 一个页面对应一个plugin,多个页面就要多个
             htmlWebpackPlugins.push(
                 new HtmlWebpackPlugin({
-                    template: path.join(__dirname, `src/views/${pageName}/index.html`),
+                    template: path.join(__dirname, `../src/views/${pageName}/index.html`),
                     filename: `${pageName}.html`,
                     chunks: [pageName],
                     inject: true,
@@ -82,7 +81,7 @@ module.exports = {
                     {
                         loader: 'sass-resources-loader',
                         options: {
-                            resources: path.resolve(__dirname, './src/assets/styles/variables.less'),
+                            resources: path.resolve(__dirname, '../src/assets/styles/variables.less'),
                         }
                     }
                 ]
@@ -108,20 +107,18 @@ module.exports = {
     plugins: [
         new VueLoaderPlugins(),
         new webpack.HotModuleReplacementPlugin(),
-        // new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(),
         new FriendlyErrorsWebpackPlugin(),
-        new VueSSRClientPlugin()
     ].concat(htmlWebpackPlugins),
     resolve: {
         alias: {
-            'vue': path.resolve(__dirname, './node_modules/vue/dist/vue.min.js'),
-            '@': path.join(__dirname, './src')
+            'vue': path.resolve(__dirname, '../node_modules/vue/dist/vue.min.js'),
+            '@': path.join(__dirname, '../src')
         }
     },
     devServer: {
-        contentBase: './dist',
+        contentBase: '../dist',
         hot: true,
-        // stats: 'errors-only'
     },
     devtool: 'cheap-source-map'
 }

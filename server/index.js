@@ -8,9 +8,7 @@ const LRU = require('lru-cache');
 const app = new Koa();
 const router = new Router();
 
-app.use(
-    static(__dirname + '../dist/')
-)
+app.use(static(path.resolve(__dirname , '../dist/')));
 
 const { createBundleRenderer } = require('vue-server-renderer');
 const createRenderer = (bundle, options) => createBundleRenderer(bundle, Object.assign(options, {
@@ -59,13 +57,7 @@ const render = (pageName, ctx, next) => {
 for(let pageName in pageRoutes) {
     let pageConfig = pageRoutes[pageName];
     router.get(pageConfig.url, (ctx, next) => {
-        console.log(ctx.url)
-        let name = '';
-        if(ctx.url === '/') {
-            name = 'index'
-        }else {
-            name = ctx.url.match(/\/(.*)(?=\.html)/)[1];
-        }
+        let name = ctx.url.match(/\/(.*)/)[1];
         render(name, ctx, next)
     })
 }

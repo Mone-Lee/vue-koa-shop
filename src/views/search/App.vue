@@ -1,6 +1,6 @@
 <template>
     <div class="search-container">
-        <p>搜索页面</p>
+        <p class="txt-line">搜索页面</p>
     </div>
 </template>
 
@@ -18,5 +18,11 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style scoped>
+.txt-line {
+    font-size: 20px;
+    color: red;
+    display: flex;
+    /* font-family: 'SourceHanSerifSC-Heavy'; */
+}
 </style>
