@@ -24,7 +24,7 @@ Object.keys(entryFiles).map(index => {
             plugins: [
                 new webpack.DefinePlugin({
                     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-                    'process.env.VUE_ENV': '"server"'
+                    'process.env.VUE_ENV': '"client"'
                 }),
                 new HtmlWebpackPlugin({
                     template: path.join(__dirname, `../src/views/${pageName}/index.html`),

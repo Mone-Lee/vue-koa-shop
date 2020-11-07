@@ -13,10 +13,10 @@ app.use(static(path.resolve(__dirname , '../dist/')));
 const { createBundleRenderer } = require('vue-server-renderer');
 const createRenderer = (bundle, options) => createBundleRenderer(bundle, Object.assign(options, {
     // for component caching
-    cache: LRU({
-        max: 1000,
-        maxAge: 1000 * 60 * 15
-    }),
+    // cache: LRU({
+    //     max: 1000,
+    //     maxAge: 1000 * 60 * 15
+    // }),
     runInNewContext: false
 }));
 
@@ -33,7 +33,7 @@ for(let pageName in pageRoutes) {
     });
 }
 
-const render = (pageName, ctx, next) => {
+const render = (pageName, ctx) => {
     const context = {
         url: ctx.url,
         title: pageName
@@ -56,9 +56,9 @@ const render = (pageName, ctx, next) => {
 
 for(let pageName in pageRoutes) {
     let pageConfig = pageRoutes[pageName];
-    router.get(pageConfig.url, (ctx, next) => {
+    router.get(pageConfig.url, (ctx) => {
         let name = ctx.url.match(/\/(.*)/)[1];
-        render(name, ctx, next)
+        render(name, ctx)
     })
 }
 
