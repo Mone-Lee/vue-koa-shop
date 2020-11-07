@@ -1,7 +1,7 @@
 <template>
     <div class="search-container">
         <p class="txt-line">搜索页面</p>
-        <p @click="msg='click'" id="clickEle">change</p>
+        <p @click="change" id="clickEle">change</p>
         <p>{{ msg }}</p>
     </div>
 </template>
@@ -10,17 +10,21 @@
 export default {
     data() {
         return {
-            msg: ''
         }   
     },
     mounted() {
-        console.log('mounted search')
-        console.log(document.getElementById('clickEle'))
+        this.$store.dispatch('getData', 232)
     },
 
     methods: {
         change() {
             console.log('change')
+        }
+    },
+
+    computed: {
+        msg() {
+            return this.$store.state.msg
         }
     }
 }

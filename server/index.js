@@ -13,10 +13,10 @@ app.use(static(path.resolve(__dirname , '../dist/')));
 const { createBundleRenderer } = require('vue-server-renderer');
 const createRenderer = (bundle, options) => createBundleRenderer(bundle, Object.assign(options, {
     // for component caching
-    // cache: LRU({
-    //     max: 1000,
-    //     maxAge: 1000 * 60 * 15
-    // }),
+    cache: LRU({
+        max: 1000,
+        maxAge: 1000 * 60 * 15
+    }),
     runInNewContext: false
 }));
 
@@ -33,32 +33,22 @@ for(let pageName in pageRoutes) {
     });
 }
 
-const render = (pageName, ctx) => {
+const render = async (pageName, ctx) => {
     const context = {
         url: ctx.url,
         title: pageName
     };
-    rendererMap[pageName].renderToString(context, (err, html) => {
-        if (err) {
-            if (err.code === 404) {
-                ctx.status = 404;
-                ctx.body = 'Page not found';
-            } else {
-                ctx.status = 500;
-                ctx.body = 'Internal Server Error';
-            }
-        } else {
-            ctx.status = 200;
-            ctx.body = html;
-        }
-    })
+
+    const html = await rendererMap[pageName].renderToString(context);
+    ctx.status = 200;
+    ctx.body = html;
 }
 
 for(let pageName in pageRoutes) {
     let pageConfig = pageRoutes[pageName];
-    router.get(pageConfig.url, (ctx) => {
+    router.get(pageConfig.url, async (ctx) => {
         let name = ctx.url.match(/\/(.*)/)[1];
-        render(name, ctx)
+        await render(name, ctx)
     })
 }
 
