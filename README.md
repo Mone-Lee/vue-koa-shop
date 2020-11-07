@@ -26,3 +26,4 @@
 1. 【Vue.js 服务器端渲染指南】https://ssr.vuejs.org/zh/  
 2. 【webpack中文文档】https://www.webpackjs.com/concepts/  
 3. 【Vue 2.x + Webpack 3.x + Nodejs 多页面项目框架】https://www.cnblogs.com/kenkofox/p/8018476.html   
+4. 【官方例子 Hackernews Demo】https://github.com/vuejs/vue-hackernews-2.0/   
