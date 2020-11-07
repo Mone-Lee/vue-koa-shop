@@ -30,15 +30,15 @@ Object.keys(entryFiles).map(index => {
                     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
                     'process.env.VUE_ENV': '"server"'
                 }),
-                // new HtmlWebpackExternalsPlugin({
-                //     externals: [
-                //       {
-                //         module: 'vue',
-                //         entry: 'https://lib.baomitu.com/vue/2.6.12/vue.js',
-                //         global: 'Vue',
-                //       },
-                //     ],
-                // }),
+                new HtmlWebpackExternalsPlugin({
+                    externals: [
+                      {
+                        module: 'vue',
+                        entry: 'https://lib.baomitu.com/vue/2.6.12/vue.js',
+                        global: 'Vue',
+                      },
+                    ],
+                }),
                 new VueSSRServerPlugin({
                     filename: `server/${pageName}/vue-ssr-server-bundle.json`//dist目录
                 })
