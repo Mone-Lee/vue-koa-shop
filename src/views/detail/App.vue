@@ -1,6 +1,5 @@
 <template>
-    <!-- 注意：一定要添加id，以及id值与index.js中挂载的id相同，否则事件无法正确绑定！！！ -->
-    <div id="root" class="search-container">
+    <div id="root" class="detail-container">
         <p class="txt-line">搜索页面</p>
         <p @click="change">change</p>
         <p>{{ msg }}</p>
@@ -14,7 +13,10 @@ export default {
         }   
     },
     mounted() {
-        this.$store.dispatch('getData', 232)
+        if(this.$route && this.$route.params && this.$route.params.column_id) {
+            let id = Number(this.$route.params.column_id);
+            this.$store.dispatch('getData', id);
+        }
     },
 
     methods: {

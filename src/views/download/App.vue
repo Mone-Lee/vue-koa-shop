@@ -1,4 +1,5 @@
 <template>
+    <!-- 注意：一定要添加id，以及id值与index.js中挂载的id相同，否则事件无法正确绑定！！！ -->
     <div id="root" class="download-container">
         <commonHeader></commonHeader>
         <div class="wrapper">

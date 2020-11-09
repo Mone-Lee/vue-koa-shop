@@ -17,6 +17,8 @@ export function createStore () {
             getData ({ commit }, id) {
                 return getData(id).then(data => {
                     commit('setMsg', data.msg)      //调用mutations的方法
+                }).catch(err => {
+                    commit('setMsg', err.msg)
                 })
             },
             setData ({ commit }, msg) {

@@ -39,6 +39,10 @@ const render = async (pageName, ctx) => {
         title: pageRoutes[pageName].title
     };
 
+    if(ctx.params && ctx.params.column_id) {
+        context.column_id = ctx.params.column_id
+    }
+
     const html = await rendererMap[pageName].renderToString(context);
     ctx.status = 200;
     ctx.body = html;
@@ -47,8 +51,7 @@ const render = async (pageName, ctx) => {
 for(let pageName in pageRoutes) {
     let pageConfig = pageRoutes[pageName];
     router.get(pageConfig.url, async (ctx) => {
-        let name = ctx.url.match(/\/(.*)/)[1];
-        await render(name, ctx)
+        await render(pageName, ctx)
     })
 }
 

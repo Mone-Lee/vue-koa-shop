@@ -11,7 +11,8 @@ const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
     output: {
         path: path.join(__dirname, '../dist'),
-        filename: '[name].[chunkhash].js'
+        filename: '[name].[chunkhash].js',
+        publicPath: "/"     // 注意： 需要配置输出的css文件，js文件的位置，不然就是相对于生成的html页面位置，例如在/detail/:id时，css文件和js文件访问就会有问题
     },
     module: {
         rules: [

@@ -3,8 +3,12 @@ import { createApp } from './app'
 export default context => {
 	const { app, store } = createApp()
 	return new Promise((resolve, reject) => {
-		store.dispatch('getData', 232).then(() => {
+		let id = Number(context.column_id);
+		store.dispatch('getData', id).then(() => {
 			context.state = store.state;
+			context.meta = `
+				<meta property="og:title" content="${store.state.msg}">
+			`
 			resolve(app);
 		})
 	})
