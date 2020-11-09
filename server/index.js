@@ -36,7 +36,7 @@ for(let pageName in pageRoutes) {
 const render = async (pageName, ctx) => {
     const context = {
         url: ctx.url,
-        title: pageName
+        title: pageRoutes[pageName].title
     };
 
     const html = await rendererMap[pageName].renderToString(context);

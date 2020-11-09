@@ -6,5 +6,9 @@ module.exports = {
     'search': {
         url: '/search',
         title: '搜索页',
+    },
+    'download': {
+        url: '/download',
+        title: '下载页',
     }
 }
