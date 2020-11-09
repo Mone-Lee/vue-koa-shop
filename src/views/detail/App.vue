@@ -7,14 +7,20 @@
 </template>
 
 <script>
+import { getQueryString } from '../../assets/utils/utils';
 export default {
     data() {
         return {
         }   
     },
     mounted() {
-        if(this.$route && this.$route.params && this.$route.params.column_id) {
-            let id = Number(this.$route.params.column_id);
+        let id = '';
+        if (process.env.NODE_ENV === "development") {
+            id = Number(getQueryString('column_id'));
+        } else {
+            id = Number(location.pathname.split('/')[1])
+        }
+        if (id) {
             this.$store.dispatch('getData', id);
         }
     },
