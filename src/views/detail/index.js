@@ -1,6 +1,7 @@
-import { createApp } from './app'
+import '../../assets/styles/global.less';
+import '../../assets/icon/iconfont.css';
 
-// 客户端特定引导逻辑……
+import { createApp } from './app'
 
 const { app, store } = createApp()
 if (window.__INITIAL_STATE__) {

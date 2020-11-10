@@ -205,6 +205,10 @@ export default {
 </script>
 
 <style scoped lang="less">
+.download-container {
+    padding-top: 65/@baserem;
+}
+
 .home-wrapper {
     width: 100%;
     flex-wrap: nowrap

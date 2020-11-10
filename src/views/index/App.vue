@@ -49,10 +49,10 @@ export default {
 </script>
 
 <style scoped lang="less">
-@font-face{
-    font-family: 'SourceHanSerifSC-Heavy';
-    src : url('@/assets/font/SourceHanSerifSC-Heavy.otf') format('truetype');
-}
+// @font-face{
+//     font-family: 'SourceHanSerifSC-Heavy';
+//     src : url('@/assets/font/SourceHanSerifSC-Heavy.otf') format('truetype');
+// }
 
 .home-search-bar {
     display: flex;
@@ -86,7 +86,7 @@ export default {
 }
 
 .font-line {
-    font-family: 'SourceHanSerifSC-Heavy';
+    // font-family: 'SourceHanSerifSC-Heavy';
 }
 
 .big-img {
