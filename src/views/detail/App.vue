@@ -1,7 +1,6 @@
 <template>
     <div id="root" class="detail-container">
         <commonHeader></commonHeader>
-        <p>{{ msg }}</p>
         <template v-if="detailData && detailData.detailInfo">
             <div class="detail-base-wrap">
                 <div class="detail-content-wrap detail-base-content-wrap">
@@ -113,21 +112,10 @@ export default {
         }   
     },
     mounted() {
-        let id = '';
+        // 本地开发使用，因为没有配置ssr的热更新，正常开发时是使用开发环境的
         if (process.env.NODE_ENV === "development") {
-            id = Number(getQueryString('column_id'));
-        } else {
-            id = Number(location.pathname.split('/')[1])
-        }
-        if (id) {
+            let id = Number(getQueryString('column_id'));
             this.$store.dispatch('getDetailData', id);
-        }
-    },
-
-    methods: {
-        change() {
-            console.log('change')
-            this.$store.dispatch('getDetailData', 278)
         }
     },
 
@@ -139,9 +127,6 @@ export default {
             }
             return tempDetailData
         },
-        msg() {
-            return this.$store.state.msg
-        }
     }
 }
 </script>
@@ -445,7 +430,7 @@ export default {
     padding-top: 40px
 }
 
-// 课程介绍， 富文本样式
+// 课程介绍， 富文本样式, 注意 /deep/，渲染富文本
 /deep/ .richcontent {
     padding: 22px 0 100px 21px;
     min-height: 738px;
