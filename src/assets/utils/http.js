@@ -31,6 +31,38 @@ export default {
                             recommendInfo: []
                         });
                     }
+                } 
+                
+                if (url === '/list/get') {
+                    let sortType = data.sortType;
+                    let filterType = data.filterType;
+                    let resultList = mockdata
+                        .sort((a, b) => {
+                            if (sortType == 1) {
+                                return a.id - b.id
+        
+                            } else if (sortType == 2) {
+                                return a.sub_count - b.sub_count
+        
+                            } else if (sortType == 3) {
+                                return a.column_price - b.column_price
+
+                            } else if (sortType == 4) {
+                                return b.column_price - a.column_price
+                            }
+        
+                        })
+                        .filter((item) => {
+                            if (filterType == 0) {
+                                return item
+        
+                            } else {
+                                return item.type == filterType
+                            }
+                        })
+                    resolve({
+                        list: resultList
+                    });
                 }
             }, 100)
         });
