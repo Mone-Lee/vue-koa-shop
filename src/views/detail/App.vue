@@ -101,8 +101,6 @@
 </template>
 
 <script>
-import { getQueryString } from '../../assets/utils/utils';
-
 import commonHeader from '../../components/commonHeader.vue';
 export default {
     components: { commonHeader },
@@ -114,7 +112,7 @@ export default {
     mounted() {
         // 本地开发使用，因为没有配置ssr的热更新，正常开发时是使用开发环境的
         if (process.env.NODE_ENV === "development") {
-            let id = Number(getQueryString('column_id'));
+            let id = Number(this.getQueryString('column_id'));
             this.$store.dispatch('getDetailData', id);
         }
     },

@@ -16,7 +16,7 @@
                         </a>
                         <a target="_blank" href="https://h5.youzan.com/v2/feature/TJe4bYhxyP?dc_ps=2293231415741009926.200001" class="menu-item">极客商城
                         </a>
-                        <a target="_blank" href="https://time.geekbang.org/download" class="menu-item on">客户端下载
+                        <a target="_blank" :href="diffEnvUrl('download')" class="menu-item on">客户端下载
                         </a>
                         <a target="_blank" href="https://time.geekbang.org/service/exchange" class="menu-item">兑换中心
                         </a>

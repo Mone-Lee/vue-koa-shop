@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { createStore } from '../../store/index.js'
+import utils from '../../assets/utils/utils'
+Vue.prototype.diffEnvUrl = utils.diffEnvUrl
 
 // 导出一个工厂函数，用于创建新的
 // 应用程序、router 和 store 实例

@@ -34,8 +34,8 @@ export default {
                 } 
                 
                 if (url === '/list/get') {
-                    let sortType = data.sortType;
-                    let filterType = data.filterType;
+                    let sortType = data.sortType || 0;
+                    let filterType = data.filterType || 0;
                     let resultList = mockdata
                         .sort((a, b) => {
                             if (sortType == 1) {

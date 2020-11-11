@@ -1,7 +1,7 @@
 <template>
     <div class="_20Cq3Rn7_0">
         <div class="_2sej44xY_0">
-            <a data-seo="" href="//time.geekbang.org/course/intro/237">
+            <a data-seo="" :href="diffEnvUrl('detail', { column_id: column.id})">
                 <img :src="column.column_cover" alt="" class="_1miPDP4s_0" />
                 <span class="_1wLiyUbR_0"></span>
             </a>
@@ -34,7 +34,9 @@
 
 <script>
 export default {
-    props: ['column']
+    props: ['column'],
+    mounted() {
+    }
 }
 </script>
 

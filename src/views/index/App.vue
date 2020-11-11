@@ -1,6 +1,7 @@
 <template>
-    <div class="home-container">
+    <div id="root" class="home-container">
         <commonHeader></commonHeader>
+        <div></div>
         <div class="_2lx4a-CP_0">
             <div class="_3KjZQbwk_0">
                 <div class="kcMABq6U_0">
@@ -43,20 +44,20 @@ export default {
         return {
             filterType: 0,
             sortType: 0,
-            columns: [],
+            // columns: [],
         }   
     },
     mounted() {
         // 本地开发使用，因为没有配置ssr的热更新，正常开发时是使用开发环境的
         if (process.env.NODE_ENV === "development") {
-            this.getListData();
+            this.$store.dispatch('getListData', {});
         }
     },
 
     methods: {
         selectFilterType(type) {
             this.filterType = type;
-            this.getListData();
+            this.$store.dispatch('getListData', {'sortType': this.sortType, 'filterType': this.filterType});
         },
 
         selectSortType(type) {
@@ -65,7 +66,7 @@ export default {
             } else {
                 this.sortType = type;
             }
-            this.getListData();
+            this.$store.dispatch('getListData', {'sortType': this.sortType, 'filterType': this.filterType});
         },
 
         getListData() {
@@ -75,6 +76,12 @@ export default {
             }).catch(err => {
                 console.log(err)
             })
+        }
+    },
+
+    computed: {
+        columns() {
+            return this.$store.state.listData.list || [];
         }
     }
 }

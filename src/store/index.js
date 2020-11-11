@@ -9,10 +9,19 @@ export function createStore () {
     return new Vuex.Store({
         //state就是数据
         state: {
-            detailData: {}
+            detailData: {},
+            listData: {}
         },
         //通过事件触发action的函数，而不是直接调用
         actions: {
+            getListData ({ commit }, params) {
+                return http.get('/list/get', params).then(data => {
+                    commit('setListData', data)      //调用mutations的方法
+                }).catch(err => {
+                    commit('setListData', {})
+                })
+            },
+
             //vue文件中调用getData时，传入id。commit是vuex内部方法
             getDetailData ({ commit }, id) {
                 return http.get('/detail/get', {'column_id': id}).then(data => {
@@ -20,13 +29,14 @@ export function createStore () {
                 }).catch(err => {
                     commit('setDetailData', {})
                 })
-            },
-            setData ({ commit }, msg) {
-                commit('setDetailData', msg)      //调用mutations的方法
-            },
+            }
         },
         //mutations做所有数据的修改
         mutations: {
+            setListData (state, data) {
+                state.listData = data;
+            },
+
             setDetailData (state, data) {
                 state.detailData = data;
             }
