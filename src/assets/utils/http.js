@@ -72,7 +72,7 @@ export default {
                             return item.id == data.columnid
                         })
                     resolve({
-                        course: courseInfo[0],
+                        column: courseInfo[0],
                         commentList: commentList
                     });
                 }

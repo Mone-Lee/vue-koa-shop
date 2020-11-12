@@ -36,7 +36,7 @@
                         </div>
                         </div>
                     </div>
-                    <div class="_21V1fOXx_0">当前播放: {{ course.articles[0].article_title }}</div>
+                    <div class="_21V1fOXx_0" v-if="column && column.articles && column.articles.length > 0">当前播放: {{ column.articles[0].article_title }}</div>
                     <!---->
                     <div class="_3651b8Ab_0">
                     </div>
@@ -101,18 +101,18 @@
             <div class="_2rRcbVfc_0">
                 <div class="_38zlilu2_0">
                     <div class="_2i2klQV__0">
-                        <h2 class="_1PSgy0gU_0">{{ course.column_title }}</h2>
+                        <h2 class="_1PSgy0gU_0">{{ column.column_title }}</h2>
                         <div class="iconfont _1ifqWM06_0"></div>
                     </div>
                     <div class="_1fAY5-KW_0">
-                        <div>共{{ course.column_unit }} · {{ course.articles.length }}课时，{{ course.update_frequency }}</div>
-                        <div class="I-xpAFyI_0"><span class="iconfont iconrenqun _1nSwuFAm_0"></span> <span class="_27yP89wS_0">{{ course.sub_count }}</span>
+                        <div v-if="column && column.articles">共{{ column.column_unit }} · {{ column.articles.length }}课时，{{ column.update_frequency }}</div>
+                        <div class="I-xpAFyI_0"><span class="iconfont iconrenqun _1nSwuFAm_0"></span> <span class="_27yP89wS_0">{{ column.sub_count }}</span>
                         </div>
                     </div>
                 </div>
                 <div class="_1uHEoL3H_0">
                     <div class="_3JVQc9Vz_0">
-                        <div class="nmGf6AAh_0" :class="{'nqNVTStp_0': currentArticleId === article.id}" v-for="article in course.articles" :key="'article' + article.id" @click="currentArticleId = article.id">
+                        <div class="nmGf6AAh_0" :class="{'nqNVTStp_0': currentArticleId === article.id}" v-for="article in column.articles" :key="'article' + article.id" @click="currentArticleId = article.id">
                             <div class="_1vfH0ukZ_0" v-if="article.is_video_preview">免费</div>
                             <div :title="article.article_title" class="_23TI7HyN_0">{{ article.article_title }}</div>
                         </div>
@@ -161,7 +161,7 @@
                     <div class="_2QPCJtXs_0">
                         <span class="_2fW1rM7W_0">
                             <span class="_1ZL0mUU-_0">订阅</span>
-                            <span class="_2Nt_Nmcb_0">¥{{ course.column_price / 100 }}</span>
+                            <span class="_2Nt_Nmcb_0">¥{{ column.column_price / 100 }}</span>
                         </span>
                     </div>
                 </div>
@@ -177,8 +177,8 @@ export default {
     components: { commonHeader },
     data() {
         return {
-            course: {},
-            commentList: [],
+            // column: {},
+            // commentList: [],
             currentArticleId: 0,
         }   
     },
@@ -187,15 +187,14 @@ export default {
         if (process.env.NODE_ENV === "development") {
             let id = Number(this.getQueryString('columnid'));
             this.getListData(id);
-            // this.$store.dispatch('getDetailData', id);
         }
     },
 
     methods: {
         getListData(id) {
             http.get('/play/get', { columnid: id }).then(data => {
-                this.course = data.course;
-                this.commentList = data.commentList;
+                this.$store.commit('setPlayCourse',data.column);
+	            this.$store.commit('setPlayCommentList', data.commentList);
             }).catch(err => {
                 console.log(err)
             })
@@ -203,8 +202,12 @@ export default {
     },
 
     computed: {
-        data() {
-            return this.$store.state.column
+        column() {
+            return this.$store.state.column || {}
+        },
+
+        commentList() {
+            return this.$store.state.commentList || []
         }
     }
 }

@@ -10,7 +10,9 @@ export function createStore () {
         //state就是数据
         state: {
             detailData: {},
-            listData: {}
+            listData: {},
+            column: {},
+            commentList: [],
         },
         //通过事件触发action的函数，而不是直接调用
         actions: {
@@ -39,6 +41,14 @@ export function createStore () {
 
             setDetailData (state, data) {
                 state.detailData = data;
+            },
+
+            setPlayCourse (state, data) {
+                state.column = data;
+            },
+
+            setPlayCommentList (state, data) {
+                state.commentList = data;
             }
         }
     })

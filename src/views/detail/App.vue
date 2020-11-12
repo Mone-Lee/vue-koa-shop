@@ -62,10 +62,10 @@
                         <section id="lesson_list" v-show="activeIndex===1">
                             <div class="_1X9Hwflu_0 _1Tl0-Sx9_0" style="height: 320px;">
                                 <div class="_3Nnx8nPI_0">
-                                    <p>第一章：课程简介&nbsp;({{ detailData.detailInfo.articles.length }}讲)</p> <span class="_3OQb1d55_0 iconfont"></span>
+                                    <p>第一章：课程简介&nbsp;({{ detailData.detailInfo.articles.length }}讲)</p>
                                 </div>
                                 <div class="_3c2pu66u_0 _2ErUWiOJ_0" v-for="article in detailData.detailInfo.articles" :key="article.article_title">
-                                    <a data-seo="" href="//time.geekbang.org/column/article/136797"
+                                    <a data-seo="" :href="diffEnvUrl('play', { columnid: detailData.detailInfo.id})"
                                     :title="article.article_title">{{ article.article_title }}</a>
                                 </div>
                             </div>

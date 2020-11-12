@@ -30,7 +30,6 @@ const createRenderer = (bundle, options) => createBundleRenderer(bundle, Object.
 let rendererMap = {};
 const template = fs.readFileSync(path.resolve(__dirname, './index.template.html'), 'utf-8');
 const pageRoutes = require('./router.js');
-const { socket } = require('./rpcClient');
 for(let pageName in pageRoutes) {
     const bundle = require(`../dist/server/${pageName}/vue-ssr-server-bundle.json`);
     const clientManifest = require(`../dist/server/${pageName}/vue-ssr-client-manifest.json`);
@@ -41,15 +40,19 @@ for(let pageName in pageRoutes) {
     });
 }
 
-const render = async (pageName, ctx) => {
+const render = async (pageName, ctx, result) => {
     let context = {
         url: ctx.url,
         title: pageRoutes[pageName].title,
         cachekey: pageName
     };
 
-    if(ctx.params && ctx.params.columnid) {
-        context.columnid = ctx.params.columnid
+    if (ctx.params && ctx.params.columnid) {
+        context.columnid = ctx.params.columnid;
+    }
+
+    if (pageName === 'play') {
+        context.state = result;
     }
 
     // 判断是否有缓存，有缓存数据则读缓存里的数据
@@ -79,9 +82,7 @@ for(let pageName in pageRoutes) {
                 })
             })
 
-            ctx.status = 200;
-    
-            ctx.body = result;
+            await render(pageName, ctx, result)
         } else {
             await render(pageName, ctx)
         }
