@@ -24,7 +24,7 @@ export function createStore () {
 
             //vue文件中调用getData时，传入id。commit是vuex内部方法
             getDetailData ({ commit }, id) {
-                return http.get('/detail/get', {'column_id': id}).then(data => {
+                return http.get('/detail/get', {'columnid': id}).then(data => {
                     commit('setDetailData', data)      //调用mutations的方法
                 }).catch(err => {
                     commit('setDetailData', {})

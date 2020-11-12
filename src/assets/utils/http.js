@@ -1,11 +1,12 @@
 const mockdata = require('../../../server/mockdata/column');
+const commentList = require('../../../server/mockdata/comment');
 
 export default {
     get(url, data={}) {   
         return new Promise((resolve, reject) => {   // 模拟异步获取数据
             setTimeout(()=> {
                 if (url === '/detail/get') {
-                    let id = data.column_id;
+                    let id = data.columnid;
                     let detailId = -1;
                     let dataLen = mockdata.length;
                     mockdata.forEach((item, index) => {
@@ -62,6 +63,17 @@ export default {
                         })
                     resolve({
                         list: resultList
+                    });
+                }
+
+                if (url === '/play/get') {
+                    let courseInfo = mockdata
+                        .filter((item) => {
+                            return item.id == data.columnid
+                        })
+                    resolve({
+                        course: courseInfo[0],
+                        commentList: commentList
                     });
                 }
             }, 100)

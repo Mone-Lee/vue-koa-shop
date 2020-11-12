@@ -5,12 +5,12 @@ module.exports = {
         name: 'index'
     },
     'detail': {
-        url: '/detail/:column_id',
+        url: '/detail/:columnid',
         title: '课程详情',
         name: 'detail'
     },
     'play': {
-        url: '/play/:column_id',
+        url: '/play/:columnid',
         title: '播放页',
         name: 'play'
     },

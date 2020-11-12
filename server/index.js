@@ -48,8 +48,8 @@ const render = async (pageName, ctx) => {
         cachekey: pageName
     };
 
-    if(ctx.params && ctx.params.column_id) {
-        context.column_id = ctx.params.column_id
+    if(ctx.params && ctx.params.columnid) {
+        context.columnid = ctx.params.columnid
     }
 
     // 判断是否有缓存，有缓存数据则读缓存里的数据
@@ -69,11 +69,11 @@ const render = async (pageName, ctx) => {
 for(let pageName in pageRoutes) {
     let pageConfig = pageRoutes[pageName];
     router.get(pageConfig.url, async (ctx) => {
-        if(pageName === 'play' && ctx.params && ctx.params.column_id) {
+        if(pageName === 'play' && ctx.params && ctx.params.columnid) {
 
             const result = await new Promise((resolve, reject) => {
                 rpcClient.write({
-                    columnid: ctx.params.column_id
+                    columnid: ctx.params.columnid
                 }, function (err, data) {
                     err ? reject(err) : resolve(data)
                 })

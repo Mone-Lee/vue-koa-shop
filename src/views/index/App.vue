@@ -70,7 +70,6 @@ export default {
         },
 
         getListData() {
-            console.log('getData ==')
             http.get('/list/get', {'sortType': this.sortType, 'filterType': this.filterType}).then(data => {
                 this.columns = data.list;
             }).catch(err => {
