@@ -35,3 +35,5 @@
 3. 【Vue 2.x + Webpack 3.x + Nodejs 多页面项目框架】https://www.cnblogs.com/kenkofox/p/8018476.html   
 4. 【官方例子 Hackernews Demo】https://github.com/vuejs/vue-hackernews-2.0/   
 5. 【vue ssr移除window.\_\_INITIAL_STATE__ 注入】https://blog.csdn.net/zhu562002124/article/details/105729321/   
+6. 【easy_sock npm链接】https://www.npmjs.com/package/easy_sock  
+7. 【protocol-buffers npm链接】https://www.npmjs.com/package/protocol-buffers
