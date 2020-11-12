@@ -1,0 +1,54 @@
+message Column {
+    required int32 id = 1;
+    required string column_cover = 2;
+    required string column_title = 3;
+    required string column_subtitle = 4;
+    required string author_name = 5;
+    required string author_intro = 6;
+    required string column_intro = 7;
+    required string column_unit = 8;
+    required uint32 sub_count = 9;
+    required string update_frequency = 10;
+    required uint32 column_price = 11;
+    optional uint32 column_price_market = 12;
+    repeated Article articles = 13;
+}
+message Article {
+    required uint32 id = 1;
+    required bool is_video_preview = 2;
+    required string article_title = 3;
+}
+
+message ColumnResponse {
+    required Column column = 1;
+    repeated Comment commentList = 2;
+}
+message ColumnRequest {
+    required int32 columnid = 1;
+}
+
+message Comment {
+    required int32 id = 1;
+    required string avatar = 2;
+    required string name = 3;
+    required bool isTop = 4;
+    required string content = 5;
+    required string publishDate = 6;
+    required int32 commentNum = 7;
+    required int32 praiseNum = 8;
+}
+
+message CommentListResponse {
+    repeated Comment comments = 1;
+}
+message CommentListRequest {
+    repeated int32 columnid = 1;
+}
+
+message PraiseRequest {
+    required int32 commentid = 1;
+}
+message PraiseResponse {
+    required int32 commentid = 1;
+    required int32 praiseNum = 2;
+}

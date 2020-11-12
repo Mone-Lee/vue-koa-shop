@@ -11,7 +11,7 @@ let diffEnvUrlHandler = (url) => {
 }
 
 export default {
-    diffEnvUrl(url, get) {
+    diffEnvUrl(url, get={}) {
         let res = diffEnvUrlHandler(url);
         // let baseURL = ''
         if(process.env.NODE_ENV === 'development') {

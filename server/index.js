@@ -6,6 +6,11 @@ const path = require('path');
 const LRU = require('lru-cache');
 const dataCache = require('./dataCache');
 
+const rpcClient = require('./rpcClient');
+
+const protobuf = require('protocol-buffers');
+const schemas = protobuf(fs.readFileSync(path.resolve(__dirname, '../backend/play.proto')));
+
 const app = new Koa();
 const router = new Router();
 
@@ -25,6 +30,7 @@ const createRenderer = (bundle, options) => createBundleRenderer(bundle, Object.
 let rendererMap = {};
 const template = fs.readFileSync(path.resolve(__dirname, './index.template.html'), 'utf-8');
 const pageRoutes = require('./router.js');
+const { socket } = require('./rpcClient');
 for(let pageName in pageRoutes) {
     const bundle = require(`../dist/server/${pageName}/vue-ssr-server-bundle.json`);
     const clientManifest = require(`../dist/server/${pageName}/vue-ssr-client-manifest.json`);
@@ -55,6 +61,7 @@ const render = async (pageName, ctx) => {
     if(!dataCache.has(pageName)) {
         dataCache.set(pageName, context);
     }
+
     ctx.status = 200;
     ctx.body = html;
 }
@@ -62,7 +69,22 @@ const render = async (pageName, ctx) => {
 for(let pageName in pageRoutes) {
     let pageConfig = pageRoutes[pageName];
     router.get(pageConfig.url, async (ctx) => {
-        await render(pageName, ctx)
+        if(pageName === 'play' && ctx.params && ctx.params.column_id) {
+
+            const result = await new Promise((resolve, reject) => {
+                rpcClient.write({
+                    columnid: ctx.params.column_id
+                }, function (err, data) {
+                    err ? reject(err) : resolve(data)
+                })
+            })
+
+            ctx.status = 200;
+    
+            ctx.body = result;
+        } else {
+            await render(pageName, ctx)
+        }
     })
 }
 

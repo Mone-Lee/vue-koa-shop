@@ -9,6 +9,11 @@ module.exports = {
         title: '课程详情',
         name: 'detail'
     },
+    'play': {
+        url: '/play/:column_id',
+        title: '播放页',
+        name: 'play'
+    },
     'download': {
         url: '/download',
         title: '下载页',
