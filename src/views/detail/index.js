@@ -11,6 +11,10 @@ if (key) {
     axios.get(`/route-cache/${key}`).then( result => {
         if(result) {
             store.replaceState(result.data.state);
+
+            axios.get(`/route-cache-delete/${key}`).then( result => {
+            }, (err) => {
+            })
         }
     }, (err) => {
     })

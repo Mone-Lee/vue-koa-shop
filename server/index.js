@@ -73,7 +73,6 @@ for(let pageName in pageRoutes) {
     let pageConfig = pageRoutes[pageName];
     router.get(pageConfig.url, async (ctx) => {
         if(pageName === 'play' && ctx.params && ctx.params.columnid) {
-
             const result = await new Promise((resolve, reject) => {
                 rpcClient.write({
                     columnid: ctx.params.columnid
@@ -93,6 +92,12 @@ for(let pageName in pageRoutes) {
 router.get('/route-cache/:key', async (ctx) => {
     let key = ctx.params.key;
     ctx.body = dataCache.peek(key);
+});
+
+router.get('/route-cache-delete/:key', async (ctx) => {
+    let key = ctx.params.key;
+    dataCache.del(key);
+    ctx.body = 'success'
 });
 
 app
