@@ -8,6 +8,23 @@
 4. 客户端激活，即浏览器运行vue**重建虚拟dom**。vue会识别到div已经是服务器渲染好的，并不需要重新渲染dom结构，只需要重建虚拟dom，备好数据，绑定事件即可。服务器渲染的输出结果的应用程序的根元素上有一个特殊的属性`data-server-rendered="true"`，让客户端 Vue 知道这部分 HTML 是由 Vue 在服务端渲染的，并且应该以激活模式进行挂载。  
 （**需要自行添加 ID 或其他能够选取到应用程序根元素的选择器，否则应用程序将无法正常激活，导致元素绑定的事件无法正常注入。**）
 
+## 项目特殊说明
+在node.js的入口文件`/server/index.js`中，为了学习和实践rpc通信（服务器端之间的通信），播放页play的初始化数据没有使用官方推荐的vuex的dispatch异步获取数据。正常开发大家可以统一获取数据的方法。   
+
+由于重点在BFF层，所以项目不涉及数据库的操作，及真正的后端开发。   
+
+项目启动说明：  
+
+ssr效果：    
+启动命令`node server/index.js`  
+访问首页(`localhost:3000/index`)，下载页(`localhost:3000/download`)，详情页(`localhost:3000/detail/232`);  
+启动命令`node backend/server.js`, `node server/index.js`  
+访问播放页(`localhost:3000/play/232`)    
+
+普通开发效果：  
+启动命令`npm run dev`  
+访问首页(`localhost:8080/index.html`)，下载页(`localhost:8080/download.html`)，详情页(`localhost:3000/detail.html?columnid=232`)，播放页(`localhost:3000/play.html?columnid=232`);        
+
 
 ## 运行命令
 1. `npm run dev`  
@@ -24,9 +41,8 @@
     之后执行`node server/index.js`可访问查看ssr后的页面效果
 5. `node server/index.js`  
     开启服务器端，默认使用3000端口，查看ssr渲染效果
-
-正常开发使用`npm run dev`快速进行开发（loacalhost:8080），  
-开发完成后使用`npm run build:ssr`和`node server/index.js`查看ssr效果（loacalhost:3000/index, loacalhost:3000/search）
+6. `node backend/server.js`  
+    开启后端服务器，即正常开发时的后端，仅在访问播放页play时必须启动
 
 
 ## 参考链接   

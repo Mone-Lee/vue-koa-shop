@@ -6,10 +6,11 @@ const path = require('path');
 const LRU = require('lru-cache');
 const dataCache = require('./dataCache');
 
+// rpc 学习实践 start
 const rpcClient = require('./rpcClient');
-
 const protobuf = require('protocol-buffers');
 const schemas = protobuf(fs.readFileSync(path.resolve(__dirname, '../backend/play.proto')));
+// rpc 学习实践 end
 
 const app = new Koa();
 const router = new Router();
@@ -51,9 +52,11 @@ const render = async (pageName, ctx, result) => {
         context.columnid = ctx.params.columnid;
     }
 
+    // rpc 学习实践 start
     if (pageName === 'play') {
         context.state = result;
     }
+    // rpc 学习实践 end
 
     // 判断是否有缓存，有缓存数据则读缓存里的数据
     if (dataCache.has(pageName)) {
@@ -73,6 +76,7 @@ for(let pageName in pageRoutes) {
     let pageConfig = pageRoutes[pageName];
     router.get(pageConfig.url, async (ctx) => {
         if(pageName === 'play' && ctx.params && ctx.params.columnid) {
+            // rpc 学习实践 start
             const result = await new Promise((resolve, reject) => {
                 rpcClient.write({
                     columnid: ctx.params.columnid
@@ -80,6 +84,7 @@ for(let pageName in pageRoutes) {
                     err ? reject(err) : resolve(data)
                 })
             })
+            // rpc 学习实践 end
 
             await render(pageName, ctx, result)
         } else {
