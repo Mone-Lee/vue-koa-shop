@@ -55,8 +55,7 @@ Object.keys(entryFiles).map(index => {
                         }
                     }
                 }
-            },
-            devtool: 'cheap-source-map'
+            }
         })
     }
 })

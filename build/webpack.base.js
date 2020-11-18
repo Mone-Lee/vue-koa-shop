@@ -6,9 +6,12 @@ const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production'
 
-module.exports = {
+const smp = new SpeedMeasurePlugin();
+module.exports = smp.wrap({
     output: {
         path: path.join(__dirname, '../dist'),
         filename: '[name].[chunkhash].js',
@@ -18,6 +21,7 @@ module.exports = {
         rules: [
             { 
                 test: /\.js$/,
+                include: path.resolve(__dirname, 'src'),
                 use: 'babel-loader'
             },
             {
@@ -89,11 +93,13 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name]_[contenthash:8].css'
         }),
-        new FriendlyErrorsPlugin()
+        new FriendlyErrorsPlugin(),
+        // new HardSourceWebpackPlugin()
       ]
     : [
         new VueLoaderPlugin(),
-        new FriendlyErrorsPlugin()
+        new FriendlyErrorsPlugin(),
+        // new HardSourceWebpackPlugin()
     ],
     resolve: {
         alias: {
@@ -101,5 +107,5 @@ module.exports = {
             '@': path.join(__dirname, '../src')
         }
     },
-    devtool: 'cheap-source-map'
-}
+    devtool: 'source-map'
+})
