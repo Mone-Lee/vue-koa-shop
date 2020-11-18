@@ -8,8 +8,7 @@
     "dev": "webpack-dev-server --config build/webpack.dev.js",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js",
     "build:server": "cross-env NODE_ENV=production node build/webpack.server.js",
-    "build:ssr": "rimraf dist && cross-env NODE_ENV=production node build/webpack.server.js",
-    "dll": "webpack --config build/webpack.dll.js"
+    "build:ssr": "rimraf dist && cross-env NODE_ENV=production node build/webpack.server.js"
   },
   "repository": {
     "type": "git",

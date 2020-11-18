@@ -7,7 +7,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production'
 
 const smp = new SpeedMeasurePlugin();
@@ -93,13 +92,11 @@ module.exports = smp.wrap({
         new MiniCssExtractPlugin({
             filename: '[name]_[contenthash:8].css'
         }),
-        new FriendlyErrorsPlugin(),
-        // new HardSourceWebpackPlugin()
+        new FriendlyErrorsPlugin()
       ]
     : [
         new VueLoaderPlugin(),
-        new FriendlyErrorsPlugin(),
-        // new HardSourceWebpackPlugin()
+        new FriendlyErrorsPlugin()
     ],
     resolve: {
         alias: {
