@@ -5,12 +5,14 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const isProd = process.env.NODE_ENV === 'production'
 
-const smp = new SpeedMeasurePlugin();
-module.exports = smp.wrap({
+// const smp = new SpeedMeasurePlugin();
+module.exports = {
     output: {
         path: path.join(__dirname, '../dist'),
         filename: '[name].[chunkhash].js',
@@ -68,18 +70,6 @@ module.exports = smp.wrap({
                 ]
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 10000
-                        }
-                    }
-                    
-                ],
-            },
-            {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: 'file-loader'
             }
@@ -92,7 +82,12 @@ module.exports = smp.wrap({
         new MiniCssExtractPlugin({
             filename: '[name]_[contenthash:8].css'
         }),
-        new FriendlyErrorsPlugin()
+        // new OptimizeCssAssetsWebpackPlugin({
+        //     assetNameRegExp: /\.css$/g,
+        //     cssProcessor: require('cssnano')
+        // }),
+        new FriendlyErrorsPlugin(),
+        // new BundleAnalyzerPlugin()
       ]
     : [
         new VueLoaderPlugin(),
@@ -105,4 +100,4 @@ module.exports = smp.wrap({
         }
     },
     devtool: 'source-map'
-})
+}

@@ -25,6 +25,21 @@ Object.keys(entryFiles).map(index => {
                 filename: '[name]-server.js',
                 libraryTarget: 'commonjs2'
             },
+            module: {
+                rules: [
+                    {
+                        test: /\.(png|svg|jpg|gif)$/,
+                        use: [
+                            {
+                                loader: 'url-loader',
+                                options: {
+                                    limit: 10000
+                                }
+                            }
+                        ],
+                    },
+                ]
+            },
             plugins: [
                 new webpack.DefinePlugin({
                     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
