@@ -216,7 +216,7 @@ export default {
 <style scoped lang="less">
 ._25cqyH-D_0 {
     max-width: 750px;
-    margin: 65/@baserem auto 0;
+    margin: 65px auto 0;
 }
 
 ._56KiEMXd_0 {

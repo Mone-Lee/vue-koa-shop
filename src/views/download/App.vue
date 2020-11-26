@@ -206,7 +206,7 @@ export default {
 
 <style scoped lang="less">
 .download-container {
-    padding-top: 65/@baserem;
+    padding-top: 65px;
 }
 
 .home-wrapper {
@@ -228,49 +228,49 @@ export default {
 
 .home-wrap1 {
     position: relative;
-    box-shadow: 0 2/@baserem 8/@baserem 0 hsla(0, 0%, 75%, .5);
+    box-shadow: 0 2px 8px 0 hsla(0, 0%, 75%, .5);
 
     .shadow {
-        height: 14/@baserem;
-        box-shadow: inset 0 2/@baserem 8/@baserem 0 hsla(0, 0%, 75%, .5);
+        height: 14px;
+        box-shadow: inset 0 2px 8px 0 hsla(0, 0%, 75%, .5);
     }
 }
 
 .block-wrapper {
-    width: 1082/@baserem;
+    width: 1082px;
     margin: 0 auto;
 }
 
 .wrap1 {
     justify-content: center;
     display: flex;
-    padding: 122/@baserem 0;
+    padding: 122px 0;
 
     .logo-img {
         img {
-            width: 256/@baserem;
-            margin-right: 85/@baserem;
-            margin-top: -3/@baserem;
+            width: 256px;
+            margin-right: 85px;
+            margin-top: -3px;
         }
     }
 
     .desc {
         h3 {
             color: #4c4c4c;
-            font-size: 28/@baserem;
+            font-size: 28px;
             line-height: 1;
-            margin-bottom: 25/@baserem;
+            margin-bottom: 25px;
             font-weight: 500;
         }
 
         p {
-            width: 543/@baserem;
+            width: 543px;
             line-height: 1.8;
-            font-size: 21/@baserem;
+            font-size: 21px;
             font-weight: 400;
             color: #4c4c4c;
             letter-spacing: 1px;
-            padding-bottom: 66/@baserem
+            padding-bottom: 66px
         }
 
         .btn {
@@ -278,14 +278,14 @@ export default {
             position: relative;
 
             button {
-                width: 121/@baserem;
+                width: 121px;
                 border: none;
                 outline: none;
-                border-radius: 20/@baserem;
-                box-shadow: 0 2/@baserem 14/@baserem 0 rgba(250, 137, 25, .3);
+                border-radius: 20px;
+                box-shadow: 0 2px 14px 0 rgba(250, 137, 25, .3);
                 background: #fa8919;
-                padding: 10/@baserem 0;
-                font-size: 18/@baserem;
+                padding: 10px 0;
+                font-size: 18px;
                 font-weight: 400;
                 text-align: center;
                 color: #fff;
@@ -298,11 +298,11 @@ export default {
             }
 
             .code {
-                width: 118/@baserem;
-                height: 109/@baserem;
+                width: 118px;
+                height: 109px;
                 position: absolute;
-                right: -125/@baserem;
-                top: -38/@baserem;
+                right: -125px;
+                top: -38px;
                 opacity: 0;
                 transition: opacity .5s;
 
@@ -337,11 +337,11 @@ export default {
 }
 
 .wrap2 {
-    padding: 99/@baserem 0;
+    padding: 99px 0;
 }
 
 .wrap2 .title {
-    width: 333/@baserem;
+    width: 333px;
     margin: 0 auto;
 }
 
@@ -350,17 +350,17 @@ export default {
 }
 
 .wrap2 .main {
-    padding-top: 160/@baserem;
-    padding-bottom: 239/@baserem;
+    padding-top: 160px;
+    padding-bottom: 239px;
 }
 
 .wrap2 .main .right img {
     position: absolute;
-    width: 426/@baserem;
+    width: 426px;
 }
 
 .wrap2 .main .right .img {
-    top: -45/@baserem;
+    top: -45px;
 }
 
 .wrap2 .main .right .item1 {
@@ -371,26 +371,26 @@ export default {
 
 .wrap2 .main .right .item2 {
     left: 28%;
-    top: -100/@baserem;
+    top: -100px;
     z-index: 2;
 }
 
 .wrap2 .main .right .item3 {
     left: 22%;
-    top: 116/@baserem;
+    top: 116px;
     z-index: 2;
 }
 
 .wrap2 .main .right .shadow {
     bottom: -120%;
-    width: 580/@baserem;
-    height: 91/@baserem;
+    width: 580px;
+    height: 91px;
     z-index: 1;
     opacity: .7;
 }
 
 .wrap3 {
-    padding: 218/@baserem 0 276/@baserem;
+    padding: 218px 0 276px;
 }
 
 .wrap3 .main .right {
@@ -403,15 +403,15 @@ export default {
 }
 
 .wrap3 .main .left .bg {
-    width: 663/@baserem;
-    top: -186/@baserem;
-    left: -62/@baserem;
+    width: 663px;
+    top: -186px;
+    left: -62px;
     z-index: 2;
 }
 
 .wrap3 .main .left .shadow {
-    width: 580/@baserem;
-    bottom: -200/@baserem;
+    width: 580px;
+    bottom: -200px;
     opacity: .6;
     z-index: 1;
 }
@@ -422,42 +422,42 @@ export default {
 }
 
 .wrap3 .main .left .dialog1 {
-    width: 277/@baserem;
-    left: 283/@baserem;
-    top: 191/@baserem;
+    width: 277px;
+    left: 283px;
+    top: 191px;
 }
 
 .wrap3 .main .left .dialog2 {
-    width: 250/@baserem;
+    width: 250px;
     left: 0;
-    top: 142/@baserem;
+    top: 142px;
 }
 
 .wrap3 .main .left .dialog3 {
-    width: 242/@baserem;
-    left: 163/@baserem;
-    top: 65/@baserem;
+    width: 242px;
+    left: 163px;
+    top: 65px;
 }
 
 .wrap3 .main .left .dialog4 {
-    width: 158/@baserem;
-    left: 342/@baserem;
+    width: 158px;
+    left: 342px;
 }
 
 .wrap3 .main .left .dialog5 {
-    width: 163/@baserem;
-    left: 55/@baserem;
-    top: -10/@baserem;
+    width: 163px;
+    left: 55px;
+    top: -10px;
 }
 
 .wrap3 .main .left .dialog6 {
-    width: 130/@baserem;
-    left: 294/@baserem;
-    top: -77/@baserem;
+    width: 130px;
+    left: 294px;
+    top: -77px;
 }
 
 .wrap4 {
-    padding: 218/@baserem 0 276/@baserem;
+    padding: 218px 0 276px;
 }
 
 .wrap4 .main .right img {
@@ -465,16 +465,16 @@ export default {
 }
 
 .wrap4 .main .right .item1 {
-    width: 240/@baserem;
-    top: -118/@baserem;
-    left: 110/@baserem;
+    width: 240px;
+    top: -118px;
+    left: 110px;
     z-index: 3;
 }
 
 .wrap4 .main .right .item2,
 .wrap4 .main .right .item3 {
-    width: 187/@baserem;
-    top: -64/@baserem;
+    width: 187px;
+    top: -64px;
     z-index: 2;
 }
 
@@ -483,18 +483,18 @@ export default {
 }
 
 .wrap4 .main .right .item3 {
-    left: 274/@baserem;
+    left: 274px;
 }
 
 .wrap4 .main .right .shadow {
-    width: 466/@baserem;
-    height: 86/@baserem;
-    bottom: -166/@baserem;
+    width: 466px;
+    height: 86px;
+    bottom: -166px;
     z-index: 1;
 }
 
 .wrap5 {
-    padding: 272/@baserem 0 207/@baserem;
+    padding: 272px 0 207px;
 }
 
 .wrap5 .main .left img {
@@ -502,23 +502,23 @@ export default {
 }
 
 .wrap5 .main .left .big {
-    width: 352/@baserem;
+    width: 352px;
     left: 0;
-    top: -175/@baserem;
+    top: -175px;
     z-index: 2;
 }
 
 .wrap5 .main .left .small {
-    width: 318/@baserem;
-    left: 102/@baserem;
-    top: -109/@baserem;
+    width: 318px;
+    left: 102px;
+    top: -109px;
     z-index: 3;
 }
 
 .wrap5 .main .left img.shadow {
-    width: 520/@baserem;
-    bottom: -125/@baserem;
-    left: -46/@baserem;
+    width: 520px;
+    bottom: -125px;
+    left: -46px;
     z-index: 1;
 }
 
@@ -528,7 +528,7 @@ export default {
 }
 
 .wrap6 {
-    padding: 228/@baserem 0 291/@baserem
+    padding: 228px 0 291px
 }
 
 .wrap6 .main .right img {
@@ -536,22 +536,22 @@ export default {
 }
 
 .wrap6 .main .right .item1 {
-    width: 274/@baserem;
-    top: -122/@baserem;
-    left: 178/@baserem;
+    width: 274px;
+    top: -122px;
+    left: 178px;
     z-index: 3
 }
 
 .wrap6 .main .right .item2 {
-    width: 259/@baserem;
-    top: -59/@baserem;
+    width: 259px;
+    top: -59px;
     z-index: 2
 }
 
 .wrap6 .main .right .shadow {
-    width: 567/@baserem;
-    bottom: -196/@baserem;
-    left: -47/@baserem;
+    width: 567px;
+    bottom: -196px;
+    left: -47px;
     z-index: 1;
 }
 
@@ -666,8 +666,8 @@ img.shadow {
 @keyframes slideUp {
     0% {
         opacity: 0;
-        -webkit-transform: translate3d(0, 30/@baserem, 0);
-        transform: translate3d(0, 30/@baserem, 0);
+        -webkit-transform: translate3d(0, 30px, 0);
+        transform: translate3d(0, 30px, 0);
     }
 
     to {
@@ -680,8 +680,8 @@ img.shadow {
 @keyframes transfromLeftIn {
     0% {
         opacity: 0;
-        -webkit-transform: translate3d(30/@baserem, 40/@baserem, 0);
-        transform: translate3d(30/@baserem, 40/@baserem, 0);
+        -webkit-transform: translate3d(30px, 40px, 0);
+        transform: translate3d(30px, 40px, 0);
     }
 
     to {
@@ -694,8 +694,8 @@ img.shadow {
 @keyframes transfromRightIn {
     0% {
         opacity: 0;
-        -webkit-transform: translate3d(-30/@baserem, 40/@baserem, 0);
-        transform: translate3d(-30/@baserem, 40/@baserem, 0);
+        -webkit-transform: translate3d(-30px, 40px, 0);
+        transform: translate3d(-30px, 40px, 0);
     }
 
     to {
@@ -708,8 +708,8 @@ img.shadow {
 @keyframes slideLeft {
     0% {
         opacity: 0;
-        -webkit-transform: translate3d(30/@baserem, 0, 0);
-        transform: translate3d(30/@baserem, 0, 0);
+        -webkit-transform: translate3d(30px, 0, 0);
+        transform: translate3d(30px, 0, 0);
     }
 
     to {
@@ -722,8 +722,8 @@ img.shadow {
 @keyframes slideRight {
     0% {
         opacity: 0;
-        -webkit-transform: translate3d(-30/@baserem, 0, 0);
-        transform: translate3d(-30/@baserem, 0, 0);
+        -webkit-transform: translate3d(-30px, 0, 0);
+        transform: translate3d(-30px, 0, 0);
     }
 
     to {
@@ -750,14 +750,14 @@ img.shadow {
 @keyframes scale2 {
     0% {
         opacity: 0;
-        left: 80/@baserem;
+        left: 80px;
         -webkit-transform: scale(.8);
         transform: scale(.8);
     }
 
     to {
         opacity: 1;
-        left: 102/@baserem;
+        left: 102px;
         -webkit-transform: scale(1);
         transform: scale(1);
     }
@@ -766,7 +766,7 @@ img.shadow {
 
 <style scoped lang="less">
 .desc-module {
-    max-width: 428/@baserem;
+    max-width: 428px;
     text-align: left;
     color: #4c4c4c;
     z-index: 10;
@@ -774,15 +774,15 @@ img.shadow {
 
 .desc-module h3 {
     position: relative;
-    margin-bottom: 25/@baserem;
+    margin-bottom: 25px;
     font-weight: 500;
     color: #4c4c4c;
-    font-size: 26/@baserem;
+    font-size: 26px;
     line-height: 1;
 }
 
 .desc-module p {
-    font-size: 20/@baserem;
+    font-size: 20px;
     color: #4c4c4c;
     font-weight: 400;
     line-height: 1.5;
@@ -792,19 +792,19 @@ img.shadow {
 .desc-module h3:before {
     content: "";
     position: absolute;
-    left: -26/@baserem;
-    top: -10/@baserem;
+    left: -26px;
+    top: -10px;
     display: block;
-    width: 25/@baserem;
-    height: 25/@baserem;
+    width: 25px;
+    height: 25px;
     background: #ceaf7e;
 }
 
 .desc-module h3:after {
-    left: -16/@baserem;
-    top: -24/@baserem;
-    width: 32/@baserem;
-    height: 32/@baserem;
+    left: -16px;
+    top: -24px;
+    width: 32px;
+    height: 32px;
     opacity: .3;
     z-index: -1;
 }

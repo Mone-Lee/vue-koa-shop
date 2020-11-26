@@ -61,7 +61,7 @@ export default {
 
 <style scoped lang="less">
 .common-header {
-    height: 65/@baserem;
+    height: 65px;
     background: #fff;
     font-family: Avenir, Helvetica, Arial, sans-serif !important;
     border-bottom: 1px solid #eaeaea;
@@ -86,8 +86,8 @@ export default {
     position: relative;
 
     .common-logo {
-        width: 120/@baserem;
-        height: 65/@baserem;
+        width: 120px;
+        height: 65px;
         background-image: url(https://static001.geekbang.org/static/time/img/geek_elements/logo-wap.png);
         background-repeat: no-repeat;
         background-position: center;
@@ -111,11 +111,11 @@ export default {
 
             a {
                 position: relative;
-                padding: 8/@baserem 12/@baserem;
+                padding: 8px 12px;
                 font-weight: 400;
                 transition: color .2s ease;
                 white-space: nowrap;
-                font-size: 16/@baserem;
+                font-size: 16px;
 
                 &:link, &:visited {
                     color: #353535;
@@ -127,9 +127,9 @@ export default {
 
                 img {
                     position: absolute;
-                    width: 20/@baserem;
-                    height: 12/@baserem;
-                    left: calc(100% - 18/@baserem);
+                    width: 20px;
+                    height: 12px;
+                    left: calc(100% - 18px);
                     top: 0;
                 }
             }
@@ -137,15 +137,15 @@ export default {
 
         .search {
             position: absolute;
-            right: 15/@baserem;
+            right: 15px;
             bottom: -5px;
             display: flex;
             align-items: center;
-            margin-right: 4/@baserem;
+            margin-right: 4px;
 
             .close {
-                margin-right: 10/@baserem;
-                font-size: 20/@baserem;
+                margin-right: 10px;
+                font-size: 20px;
                 font-weight: 500;
                 color: #e2e2e2;
                 cursor: pointer
@@ -158,7 +158,7 @@ export default {
                 transition: width .3s;
 
                 &.open {
-                    width: 300/@baserem;
+                    width: 300px;
                 }
             }
 
@@ -178,23 +178,23 @@ export default {
 
             .search-btn {
                 position: relative;
-                width: 32/@baserem;
-                height: 32/@baserem;
-                line-height: 32/@baserem;
+                width: 32px;
+                height: 32px;
+                line-height: 32px;
                 color: #404040;
                 text-align: center;
                 cursor: pointer;
                 user-select: none;
                 
                 .search-icon {
-                    font-size: 18/@baserem;
+                    font-size: 18px;
                 }
             }
         }
     }
 
     .userinfo {
-        height: 65/@baserem;
+        height: 65px;
         line-height: 100%;
         display: flex;
         justify-content: center;
@@ -207,18 +207,18 @@ export default {
             margin-top: 2px;
 
             a {
-                font-size: 16/@baserem;
+                font-size: 16px;
                 color: #888;
                 display: block;
-                height: 65/@baserem;
-                line-height: 65/@baserem;
+                height: 65px;
+                line-height: 65px;
                 font-weight: 400;
                 cursor: pointer;
 
                 &:first-child:after {
                     content: "|";
-                    margin-left: 8/@baserem;
-                    margin-right: 8/@baserem;
+                    margin-left: 8px;
+                    margin-right: 8px;
                 }
             }
         }

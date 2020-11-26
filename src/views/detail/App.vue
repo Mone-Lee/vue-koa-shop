@@ -131,16 +131,16 @@ export default {
 
 <style scoped lang="less">
 .detail-container {
-    padding-top: 65/@baserem;
+    padding-top: 65px;
 }
 
 .detail-base-wrap {
-    padding: 54/@baserem 0 60/@baserem;
+    padding: 54px 0 60px;
 }
 
 .detail-content-wrap {
     width: 100%;
-    max-width: 1080/@baserem;
+    max-width: 1080px;
     margin: 0 auto;
 }
 
@@ -155,32 +155,32 @@ export default {
         align-items: center;
 
         .course-cover-img {
-            margin-right: 25/@baserem;
+            margin-right: 25px;
             font-size: 0;
 
             img {
-                width: 148/@baserem;
-                height: 195/@baserem;
-                border-radius: 5/@baserem;
+                width: 148px;
+                height: 195px;
+                border-radius: 5px;
                 background: #eee;
             }
         }
 
         .course-base-intro {
             flex: 1;
-            height: 195/@baserem;
+            height: 195px;
 
             .course-intro-title {
-                font-size: 24/@baserem;
-                line-height: 25/@baserem;
+                font-size: 24px;
+                line-height: 25px;
                 color: #404040;
                 font-weight: 500;
             }
 
             .course-intro-subtitle {
-                margin-top: 10/@baserem;
-                font-size: 18/@baserem;
-                line-height: 20/@baserem;
+                margin-top: 10px;
+                font-size: 18px;
+                line-height: 20px;
                 color: #404040;
                 font-weight: 400;
             }
@@ -188,27 +188,27 @@ export default {
             .course-intro-author {
                 color: #404040;
                 font-weight: 400;
-                font-size: 16/@baserem;
-                margin-top: 20/@baserem;
-                line-height: 16/@baserem;
+                font-size: 16px;
+                margin-top: 20px;
+                line-height: 16px;
             }
 
             .course-intro-authorIntro {
-                margin-top: 7/@baserem;
-                font-size: 14/@baserem;
+                margin-top: 7px;
+                font-size: 14px;
                 color: #404040;
-                line-height: 20/@baserem;
+                line-height: 20px;
                 font-weight: 400;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
-                height: 40/@baserem;
+                height: 40px;
             }
 
             .course-intro-ctrl-wrap {
-                margin-top: 18/@baserem;
+                margin-top: 18px;
                 justify-content: space-between;
                 align-items: flex-end;
                 display: flex;
@@ -222,14 +222,14 @@ export default {
                         cursor: pointer;
                         border: none;
                         outline: none;
-                        width: 110/@baserem;
-                        height: 34/@baserem;
-                        border-radius: 5/@baserem;
-                        line-height: 34/@baserem;
+                        width: 110px;
+                        height: 34px;
+                        border-radius: 5px;
+                        line-height: 34px;
                         background: #fa8919;
                         color: #fff;
                         font-weight: 400;
-                        font-size: 14/@baserem;
+                        font-size: 14px;
 
                         &:hover {
                             background: #ff7800;
@@ -239,27 +239,27 @@ export default {
                     .course-intro-activity {
                         display: flex;
                         flex-direction: column;
-                        margin-left: 20/@baserem;
+                        margin-left: 20px;
 
                         div {
-                            font-size: 12/@baserem;
+                            font-size: 12px;
                             font-weight: 400;
                             color: #fa8919;
                         }
 
                         s {
                             color: #888;
-                            font-size: 12/@baserem;
+                            font-size: 12px;
                             font-weight: 400;
-                            margin-left: 10/@baserem;
-                            margin-top: 4/@baserem;
+                            margin-left: 10px;
+                            margin-top: 4px;
                         }
                     }
                 }
 
                 .course-intro-ctrl-info {
                     color: #888;
-                    font-size: 13/@baserem;
+                    font-size: 13px;
                     font-weight: 300;
                     line-height: 1;
                 }
@@ -268,21 +268,21 @@ export default {
     }
 
     .code-wrap {
-        margin-left: 63/@baserem;
+        margin-left: 63px;
         background: #fafafa;
-        width: 305/@baserem;
-        height: 196/@baserem;
-        border-radius: 5/@baserem;
+        width: 305px;
+        height: 196px;
+        border-radius: 5px;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-        padding: 25/@baserem 20/@baserem 31/@baserem 24/@baserem;
+        padding: 25px 20px 31px 24px;
         border: 1px solid #fcfdfc;
 
         h3 {
-            font-size: 16/@baserem;
+            font-size: 16px;
             font-weight: 500;
             color: #404040;
-            margin-bottom: 18/@baserem;
+            margin-bottom: 18px;
         }
 
         .j4HnGIK5_0 {
