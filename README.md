@@ -44,6 +44,15 @@ ssr效果：
 6. `node backend/server.js`  
     开启后端服务器，即正常开发时的后端，仅在访问播放页play时必须启动
 
+## 项目目录说明  
+backend  
+　　模拟真实开发场景时的后端（仅在需要使用rpc通信方法时使用，否则，可以不需要）  
+build  
+　　环境配置文件文件夹  
+server  
+　　使用koa实现的BFF层，实现ssr的主要逻辑  
+src  
+　　正常开发文件夹
 
 ## 参考链接   
 1. 【Vue.js 服务器端渲染指南】https://ssr.vuejs.org/zh/  
