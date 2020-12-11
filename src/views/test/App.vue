@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper" ref="wrapper" :style="{height: height + 'px'}" @scroll="handleScroll">
+        <p class="text">测试</p>
         <div ref="content">
             <div :style="{height: fillTopHeight + 'px'}"></div>
             <div class="item"
@@ -66,6 +67,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+// @vw: 3.75vw;
+.text {
+    font-size: 20/@vw;
+}
+
 .wrapper {
     border: 1px solid #ccc;
     height: 100%;
