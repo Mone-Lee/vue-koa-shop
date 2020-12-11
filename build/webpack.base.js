@@ -9,6 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 // const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 const isProd = process.env.NODE_ENV === 'production'
 
 // const smp = new SpeedMeasurePlugin();
@@ -87,11 +88,13 @@ module.exports = {
         //     cssProcessor: require('cssnano')
         // }),
         new FriendlyErrorsPlugin(),
+        // new HTMLInlineCSSWebpackPlugin()
         // new BundleAnalyzerPlugin()
       ]
     : [
         new VueLoaderPlugin(),
-        new FriendlyErrorsPlugin()
+        new FriendlyErrorsPlugin(),
+        // new HTMLInlineCSSWebpackPlugin()
     ],
     resolve: {
         alias: {
